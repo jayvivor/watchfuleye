@@ -1,0 +1,62 @@
+Player class
+stores stats (immutable values representing ability)
+stores attributes (mutable values representing state)
+stores relationships
+executes actions (get_chal_score, get_target_list, etc)
+
+Relationship class (within Player)
+stores owner
+stores target
+stores stats (immutable initial values used for later calculations, stored for continuity)
+stores attributes (mutable values representing state)
+executes actions (small_talk, game_talk, fight, etc)
+
+House class
+stores rooms (Living, Backyard, HoH Room, etc.)
+stores cast (set of players)
+executes actions (Run comp, free time, house meeting)
+
+Season class
+stores history (Eviction list, players, comps, etc)
+executes seasons
+
+Moment class
+stores timestamp (day, hour)
+stores event type (challenge, small talk, alliance formation, fight, etc)
+
+Narrator class
+executes dialogue (recapping events from the house)
+
+Alliance class
+stores leader and members
+stores alliance type (Deal, duo, majority, core)
+
+
+House Fights
+
+Has an aggressor and a defender.
+Aggressor will either focus on insight or insult. The higher the gamebot score, the more likely it will be insight-based.
+Applies to the defender as well, but they're more baseline likely to insult than insight.
+
+3 Intensities: Mild, Argument, Shouting Match
+
+It can end in 1 of 3 ways:
+Denial (defender minimizes damage from insight/narrative changes)
+Counter (defender replies with their own insight/insult to drown out the aggressor)
+Exposure (defender does not engage, so insight/insult is shared but aggressor still looks bad)
+
+
+
+
+Insight
+
+Juiciness - A measure of how fresh the information is, which will determine how much trust is built,
+as well as how much it affects decision-making.
+
+What goes into juiciness?
+
+1. How recent is the information (ex: how long ago (in days) was the alliance made)
+2. How surprising is the information (based on what you know about all parties)
+3. Was this information already known
+4. Do you actually believe it
+5. How long ago did you find out (very fresh information is very potent; 3/4 life every cycle)
