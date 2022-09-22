@@ -8,8 +8,8 @@ class Season:
 
     def __init__(self, name="Watchful Eye", cast_size=constants.default_cast_size, narrator=None):
         self.narrator = narrator if narrator else Narrator()
-        self.house = House()
         self.cast = [Player() for _ in range(cast_size)]
+        self.house = House(self.cast)
         self.name = name
         self.cycles = [Cycle() for _ in range(cast_size - 2)] + [Cycle("Finale")]
     
@@ -31,13 +31,13 @@ class Cycle:
         "free time": 
         {
             "action": Player.free_time,
-            "pool": House.cast["active"],
+            "pool": "active",
             "title": "Free Time",
         },
         "hoh comp":
         {
             "action": House.run_comp,
-            "pool": House.cast["active"],
+            "pool": "active",
             "title": "Head of Household Competition"
         }
     }
@@ -64,7 +64,7 @@ class Cycle:
     def run_day(self, day_number):
         results = []  # A list of a list of moments
         for item in self.schedule[day_number]:
-            pool = Cycle.event_dict[item]["pool"]
+            pool = self.house.cast[Cycle.event_dict[item]["pool"]]
             action = Cycle.event_dict[item]["action"]
             title = Cycle.event_dict[item]["title"]
             args = Cycle.event_dict[item].get("args")

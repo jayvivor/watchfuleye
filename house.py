@@ -42,6 +42,8 @@ class House:
                 print(f"{player.name} is throwing the challenge.")
         return scoreboard.sort()  #TODO: softmax it instead for some randomness.
 
+    def get_pool(self, name):
+        return self.cast[name]
 
     def get_context(self):
         return len(self.active)  #TODO: This is pretty much a placeholder. Determine context later.

@@ -30,6 +30,18 @@ def random_within_circle(diameter=100):
         return x+radius,y+radius
     return random_within_circle(diameter)
 
+def gridify(group, dimensions):
+    max_width = dimensions[0]
+    max_height = dimensions[1]
+    size = len(group)
+    rows = int(math.sqrt(size))
+    cols = math.ceil(size/rows)
+    indi_width = max_width/cols
+    indi_height = max_height/rows
+
+    return [(val, (i%cols)*indi_width, (i//cols)*indi_height) for i, val in enumerate(group)], indi_width, indi_height
+
+
 class Timestamp:
 
     def __init__(self, hour, day):

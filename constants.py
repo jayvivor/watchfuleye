@@ -26,3 +26,6 @@ default_cast_size = 16
 
 # Timestamps
 hours_per_day = 10
+
+# Visuals and Engine
+screen_size = 500, 500

@@ -60,6 +60,9 @@ class Player:
         return random.choice([False, False, False, False, True])
 
     #Social Game
+    def free_time(self):
+        pass
+
     def small_talk(self, target):
         other_rel = target.get_relationship(self)
         charm = self.stats["charm"]
